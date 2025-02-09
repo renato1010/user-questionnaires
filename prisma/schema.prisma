@@ -33,8 +33,15 @@ model Question {
   id                    Int                     @id @default(autoincrement())
   questionText          String                  @unique
   type                  QuestionType
-  options               String[]
   QuestionnaireQuestion QuestionnaireQuestion[]
+  QuestionOptions       QuestionOptions[]
+}
+
+model QuestionOptions {
+  id         Int       @id @default(autoincrement())
+  option     String
+  question   Question? @relation(fields: [questionId], references: [id])
+  questionId Int?
 }
 
 model QuestionnaireQuestion {
@@ -63,8 +70,8 @@ model Answer {
 }
 
 enum QuestionType {
-  MCQ
-  INPUT
+  mcq
+  input
 }
 
 enum UserRole {

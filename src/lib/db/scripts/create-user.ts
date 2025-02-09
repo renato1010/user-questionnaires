@@ -1,5 +1,5 @@
 'use server';
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client/edge';
 import prisma from '../db';
 import { hashPassword } from '@/lib/auth/session';
 
@@ -20,8 +20,7 @@ async function createUser() {
     passwordHash: await hashPassword('hT7-abcD')
   };
   try {
-    const user = await prisma.user.create({ data: regularUser });
-    console.log(user);
+    await prisma.user.create({ data: regularUser });
   } catch (error) {
     console.error(error);
   }
@@ -34,28 +33,20 @@ async function createAdmin() {
     role: 'ADMIN'
   };
   try {
-    const user = await prisma.user.create({ data: adminUser });
+    await prisma.user.create({ data: adminUser });
   } catch (error) {
     console.error(error);
   }
 }
 
-async function createUsers() {
+export async function createUsers() {
   try {
     await createUser();
     await createAdmin();
     console.log('Users created successfully');
   } catch (error) {
     console.error('Error creating users', error);
-  }
-}
-
-(async () => {
-  try {
-    await createUsers();
-  } catch (error) {
-    console.error(error);
   } finally {
     await prisma.$disconnect();
   }
-})();
+}

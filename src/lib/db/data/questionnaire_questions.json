@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "question": "{\n  \"type\": \"mcq\",\n  \"options\": [\n  \"Improve blood pressure\",\n  \"Reduce risk of future cardiac events\",\n  \"Support lifestyle changes\",\n  \"Longevity benefits\"\n  ],\n  \"question\": \"Why are you interested in this product? Select all that apply.\"\n }"
+  },
+  {
+    "id": "2",
+    "question": "{\n  \"type\": \"input\",\n  \"question\": \"Tell us anything else you’d like your provider to know when prescribing your medication.\"\n }"
+  },
+  {
+    "id": "3",
+    "question": "{\n  \"type\": \"input\",\n  \"question\": \"What is your current weight?\"\n }"
+  },
+  {
+    "id": "4",
+    "question": "{\n  \"type\": \"mcq\",\n  \"options\": [\n  \"Keto or low carb\",\n  \"Plant-based\",\n  \"Macro or calorie counting\",\n  \"Weight Watchers\",\n  \"Noom\",\n  \"Calibrate\",\n  \"Found\",\n  \"Alpha\",\n  \"Push Health\"\n  ],\n  \"question\": \"Which of the following have you tried in the past? Select all that apply.\"\n }"
+  },
+  {
+    "id": "5",
+    "question": "{\n  \"type\": \"mcq\",\n  \"options\": [\n  \"Losing 1-15 pounds\",\n  \"Losing 16-50 pounds\",\n  \"Losing 51+ pounds\",\n  \"Not sure, I just need to lose weight\"\n  ],\n  \"question\": \"What’s your weight loss goal?\"\n }"
+  },
+  {
+    "id": "6",
+    "question": "{\n  \"type\": \"input\",\n  \"question\": \"Please list any new medications you are taking.\"\n }"
+  }
+]
