@@ -1,51 +1,31 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { signToken, verifyToken } from '@/lib/auth/session';
-
-const protectedRoutes = '/questionnaires';
+import { getSession } from '@/lib/auth/session';
+import { protectedRoutes } from './routes';
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const sessionCookie = request.cookies.get('session');
-  console.log({ sessionCookie });
-  // const isProtectedRoute = pathname.startsWith(protectedRoutes);
-  if (request.nextUrl.pathname.startsWith('/')) {
-    return NextResponse.rewrite(new URL('/sign-in', request.url));
+  const { nextUrl } = request;
+  const { pathname } = nextUrl;
+  const isAuthRoute = protectedRoutes.includes(pathname);
+  const session = await getSession();
+  console.dir({ session }, { depth: Infinity });
+  // for now land user on sign-in page
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL('/sign-in', nextUrl));
   }
-  if (!sessionCookie) {
-    return NextResponse.redirect(new URL('/sign-in', request.url));
+  if (!session && isAuthRoute) {
+    return NextResponse.redirect(new URL('/sign-in', nextUrl));
   }
 
-  // let res = NextResponse.next();
-
-  // if (sessionCookie) {
-  //   try {
-  //     const parsed = await verifyToken(sessionCookie.value);
-  //     const expiresInOneDay = new Date(Date.now() + 24 * 60 * 60 * 1000);
-
-  //     res.cookies.set({
-  //       name: 'session',
-  //       value: await signToken({
-  //         ...parsed,
-  //         expires: expiresInOneDay.toISOString()
-  //       }),
-  //       httpOnly: true,
-  //       secure: true,
-  //       sameSite: 'lax',
-  //       expires: expiresInOneDay
-  //     });
-  //   } catch (error) {
-  //     console.error('Error updating session:', error);
-  //     res.cookies.delete('session');
-  //     if (isProtectedRoute) {
-  //       return NextResponse.redirect(new URL('/sign-in', request.url));
-  //     }
-  //   }
-  // }
-
-  return res;
+  return NextResponse.next();
 }
 
+// from https://clerk.com/docs/quickstarts/nextjs#add-middleware-to-your-application
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)'
+  ]
 };
