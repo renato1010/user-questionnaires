@@ -14,23 +14,37 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Project Setup & Workflow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Installation Steps:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository and install dependencies:
+   ```bash
+   git clone [repo-url]
+   npm install
+   ```
 
-## Learn More
+**Application Flow:**
 
-To learn more about Next.js, take a look at the following resources:
+1. The application launches at the sign-in page by default
+2. **Authentication:**
+   - Use one of the predefined test user accounts (credentials available upon request)
+3. **Post-Login Navigation:**
+   - **Regular Users:** Redirected to forms interface
+   - **Admin Users:** Redirected to dashboard
+4. **User Features:**
+   - Complete dynamic forms with intelligent answer reuse:
+   - Previously submitted responses automatically pre-populate matching questions
+5. **Admin Features:**
+   - Monitor and analyze user responses through dashboard metrics
+   - Access comprehensive response data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Database Implementation
 
-## Deploy on Vercel
+**Schema Configuration:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ORM: Prisma
+- Database: PostgreSQL (via [Prisma Postgres](https://www.prisma.io/postgres))
+- Schema Definition: [`prisma/schema.prisma`](prisma/schema.prisma)
