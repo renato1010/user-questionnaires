@@ -48,3 +48,7 @@ bun dev
 - ORM: Prisma
 - Database: PostgreSQL (via [Prisma Postgres](https://www.prisma.io/postgres))
 - Schema Definition: [`prisma/schema.prisma`](prisma/schema.prisma)
+
+### ER DIAGRAM
+
+![Entity relations diagram](https://github.com/renato1010/user-questionnaires/blob/main/images/prisma-erd.svg?raw=true)
