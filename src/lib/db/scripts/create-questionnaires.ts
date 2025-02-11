@@ -12,7 +12,6 @@ export async function createQuestionnaires() {
     try {
       await prisma.questionnaire.create({
         data: {
-          id: parseInt(questionnaire.id),
           title: questionnaire.name
         }
       });

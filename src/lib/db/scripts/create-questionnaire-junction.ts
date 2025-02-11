@@ -2,8 +2,6 @@
 import prisma from '@/lib/db/db';
 import questionnaireJunctions from '@/lib/db/data/questionnaire_junction.json';
 
-// console.dir({ questionnaireJunctions }, { depth: Infinity });
-
 export async function createQuestionnaireJunction() {
   try {
     for (const junction of questionnaireJunctions) {

@@ -20,7 +20,6 @@ export async function createQuestions() {
       if (hasOptions) {
         await prisma.question.create({
           data: {
-            id: question.id,
             type: question.type,
             questionText: question.question,
             QuestionOptions: {
@@ -33,7 +32,6 @@ export async function createQuestions() {
       } else {
         await prisma.question.create({
           data: {
-            id: question.id,
             type: question.type,
             questionText: question.question
           }

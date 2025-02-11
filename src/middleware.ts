@@ -6,16 +6,14 @@ import { protectedRoutes } from './routes';
 export async function middleware(request: NextRequest) {
   const { nextUrl } = request;
   const { pathname } = nextUrl;
-  const isAuthRoute = protectedRoutes.includes(pathname);
-  const session = await getSession();
-  console.dir({ session }, { depth: Infinity });
+  const sessionCookie = request.cookies.get('session');
   // for now land user on sign-in page
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/sign-in', nextUrl));
   }
-  if (!session && isAuthRoute) {
-    return NextResponse.redirect(new URL('/sign-in', nextUrl));
-  }
+  // if (!session) {
+  //   return NextResponse.redirect(new URL('/sign-in', nextUrl));
+  // }
 
   return NextResponse.next();
 }

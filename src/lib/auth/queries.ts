@@ -11,7 +11,7 @@ export async function getUser() {
   }
 
   const sessionData = await verifyToken(sessionCookie.value);
-  console.log({ sessionData });
+
   if (!sessionData || !sessionData.user || typeof sessionData.user.id !== 'number') {
     return null;
   }

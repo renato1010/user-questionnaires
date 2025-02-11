@@ -19,7 +19,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { signInSchema, type SignInFormSchemaType } from '@/lib/schemas/sign-in';
 import { DEFAULT_ADMIN_REDIRECT, DEFAULT_USER_REDIRECT } from '@/routes';
-import { errors } from 'jose';
 
 export function Login() {
   return (
