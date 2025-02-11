@@ -26,7 +26,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let userPromise = getUser();
+  const userPromise = getUser();
   return (
     <html lang="en">
       <body className={`h-dvh w-screen ${geistSans.variable} ${geistMono.variable} antialiased`}>

@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getSession } from '@/lib/auth/session';
-import { protectedRoutes } from './routes';
+// import { getSession } from '@/lib/auth/session';
+// import { protectedRoutes } from './routes';
 
 export async function middleware(request: NextRequest) {
   const { nextUrl } = request;
   const { pathname } = nextUrl;
-  const sessionCookie = request.cookies.get('session');
+  // const sessionCookie = request.cookies.get('session');
   // for now land user on sign-in page
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/sign-in', nextUrl));

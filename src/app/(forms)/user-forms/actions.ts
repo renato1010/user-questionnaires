@@ -12,7 +12,7 @@ export async function getAllQuestionnaires() {
   try {
     const data = await findAllQuestionnaires();
     return { ok: true, message: 'success', data };
-  } catch (error) {
+  } catch (_error) {
     return { ok: false, message: 'error getting data', data: null };
   }
 }
@@ -25,7 +25,7 @@ export async function getQuestionsByQuestionnaireId(id: number) {
   try {
     const data = await findQuestionsByQuestionnaireId(id);
     return { ok: true, message: 'success', data };
-  } catch (error) {
+  } catch (_error) {
     return { ok: false, message: 'error getting data', data: null };
   }
 }
@@ -35,7 +35,7 @@ export async function saveAnswers(answers: SaveAnswers) {
     // save answers
     await saveManyAnswers(answers);
     return { ok: true, message: `success saving answers`, data: null };
-  } catch (error) {
+  } catch (_error) {
     return { ok: false, message: 'error saving answers', data: null };
   }
 }
@@ -48,7 +48,7 @@ export async function getAnwersByQuestionsAndUserIds(uniqueQuestionIds: number[]
   try {
     const answers = await findAnswersByQuestionIdsAndUserId(uniqueQuestionIds, user.id);
     return { ok: true, message: 'success', data: answers };
-  } catch (error) {
+  } catch (_error) {
     return { ok: false, message: 'error getting data', data: null };
   }
 }

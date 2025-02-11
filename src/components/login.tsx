@@ -3,7 +3,7 @@ import { useTransition } from 'react';
 import { redirect } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Lock, Loader2 } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import { login } from '@/lib/auth/session';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
